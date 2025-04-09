@@ -28,5 +28,5 @@ app.listen(PORT, async () => {
     // test_drizzle_integration();
     // createUser({name:"Rahul Jauhari",age:21,email:"rj.rahul.jauhari@gmail.com1"});
     // console.log(doesUserExist("rj.rahul.jauhari@gmail.com"))
-    console.log((await getUserWithEmail("rj.rahul.jauhari@gmail.com")))
+    // console.log((await getUserWithEmail("rj.rahul.jauhari@gmail.com")))
 })
