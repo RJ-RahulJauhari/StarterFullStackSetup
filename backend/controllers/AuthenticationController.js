@@ -18,7 +18,7 @@ export const register = async (req, res) => {
         }
 
         const hashPassword = await bcrypt.hash(password, 10);
-        const newUserID = await NeonDB.insert(usersTable).values({ name, email, password: hashPassword, role:role }).returning({id:usersTable.id,name:usersTable.name});
+        const newUserID = await DB.insert(usersTable).values({ name, email, password: hashPassword, role:role }).returning({id:usersTable.id,name:usersTable.name});
         
         return res.status(201).json({ message: "User Registered Successfully...", user_data:newUserID});
 
