@@ -4,7 +4,12 @@ import cors from "cors"
 import { createUser, test_drizzle_integration, test_neon_connection } from "./db/pg_db.js";
 import { authRouter } from "./routers/AuthRouter.js";
 import { doesUserExist, getUserWithEmail } from "./operations/UserOperations.js";
+import cookieParser from "cookie-parser";
+
 configDotenv();
+import "./config/passportJWT.js"
+import bodyParser from "body-parser";
+
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -13,8 +18,11 @@ app.use(cors({
     origin:["*"]
 }))
 
+
+app.use(cookieParser());
 app.use(express.json()); // <-- This is required to parse JSON requests
 app.use(express.urlencoded({ extended: true })); // For form-data parsing
+
 
 app.use("/auth",authRouter);
 app.use("/",(req,res) => {

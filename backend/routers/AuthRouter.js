@@ -1,10 +1,10 @@
-import { Router } from "express";
-import { adminRoute, authenticatedRoute, authorize, isAuthenticated, login, register } from "../controllers/AuthenticationController.js";
+import express from "express";
+import { login, register, protectedRoute, logout } from "../controllers/AuthController.js";
+import { requireAuth } from "../middleware/auth.js";
 
+export const authRouter = express.Router();
 
-export const authRouter = Router();
-
-authRouter.post("/register",register);
-authRouter.post("/login",login);
-authRouter.get("/authenticatedEndpoint",isAuthenticated,authenticatedRoute);
-authRouter.get("/adminAuthEndpoint",authorize(["admin","staff"]),adminRoute);
+authRouter.post("/register", register);
+authRouter.post("/login", login);
+authRouter.get("/protected", requireAuth, protectedRoute);
+authRouter.post("/logout",logout);

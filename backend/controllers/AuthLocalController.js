@@ -2,7 +2,7 @@ import { NeonDB } from "../db/pg_db.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { usersTable } from "../schema/userSchema.js";
-import { doesUserExist, getUserWithEmail } from "../operations/UserOperations.js";
+import { doesUserExist, getUserWithEmail } from "../models/UserModel.js";
 import { AccessTokenSecret, RefreshTokenSecret } from "../config.js";
 
 export const register = async (req, res) => {

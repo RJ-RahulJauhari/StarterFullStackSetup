@@ -17,3 +17,7 @@ export const getUserWithEmail = async (email) => {
     const user = await DB.select().from(usersTable).where(eq(usersTable.email,email));
     return user[0];
 }
+
+export const createUserInDB = async (data) => {
+    await NeonDB.insert(usersTable).values(data);
+  };
